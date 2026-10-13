@@ -19,13 +19,13 @@ Barcha ma'lumotlarni o‘zgartirish uchun `script.js` faylini oching va yuqorida
 
 ```javascript
 const CONFIG = {
-  groom: "Ali",                                      // Kuyov ismi
-  bride: "Lola",                                     // Kelin ismi
-  date: "2027-07-07T18:00:00+05:00",                 // To'y sanasi va vaqti
-  venueCity: "JIZZAX SHAHRI",                        // Shakar / Viloyat
-  venueHall: "Yakkasaroy to‘ylar maskani",           // To'yxona nomi
-  mapUrl: "https://maps.google.com/?q=Jizzax",       // Xarita havolasi
-  family: "Xamrayevlar oilasi",                      // Oila nomi (Ehtirom ila)
+  groom: "Abdusattor",                               // Kuyov ismi
+  bride: "Mohinur",                                  // Kelin ismi
+  date: "2026-11-04T17:00:00+05:00",                 // To'y sanasi va vaqti (4-noyabr, 2026)
+  venueCity: "SAMARQAND CHARXIN",                    // Shahar / Hudud
+  venueHall: "Ratana restarani",                     // To'yxona / Restoran
+  mapUrl: "https://maps.google.com/?q=Samarqand+Charxin+Ratana+restorani", // Geolokatsiya havolasi
+  family: "Ganievlar oilasi",                        // Oila nomi (Ehtirom ila)
   whatsappNumber: "998901234567",                    // RSVP javobi boradigan raqam
   musicUrl: "music.mp3"                              // Musiqa fayli
 };

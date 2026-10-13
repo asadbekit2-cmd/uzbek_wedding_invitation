@@ -5,13 +5,13 @@
    ========================================================================== */
 
 const CONFIG = {
-  groom: "Ali",
-  bride: "Lola",
-  date: "2027-07-07T18:00:00+05:00",
-  venueCity: "JIZZAX SHAHRI",
-  venueHall: "Yakkasaroy to‘ylar maskani",
-  mapUrl: "https://maps.google.com/?q=Jizzax+Yakkasaroy+to'ylar+maskani",
-  family: "Xamrayevlar oilasi",
+  groom: "Abdusattor",
+  bride: "Mohinur",
+  date: "2026-11-04T17:00:00+05:00",
+  venueCity: "SAMARQAND CHARXIN",
+  venueHall: "Ratana restarani",
+  mapUrl: "https://maps.google.com/?q=Samarqand+Charxin+Ratana+restorani", // Geolokatsiya havolasini o'zingiznikiga almashtirishingiz mumkin
+  family: "Ganievlar oilasi",
   whatsappNumber: "998901234567", // RSVP uchun xalqaro formatda (+ siz)
   musicUrl: "music.mp3"
 };
