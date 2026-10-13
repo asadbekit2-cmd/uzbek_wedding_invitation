@@ -11,8 +11,6 @@ const CONFIG = {
   venueCity: "JIZZAX SHAHRI",
   venueHall: "Yakkasaroy to‘ylar maskani",
   mapUrl: "https://maps.google.com/?q=Jizzax+Yakkasaroy+to'ylar+maskani",
-  cardNumber: "9860 0825 5624 1501",
-  cardHolder: "Usmonov Umarbek",
   family: "Xamrayevlar oilasi",
   whatsappNumber: "998901234567", // RSVP uchun xalqaro formatda (+ siz)
   musicUrl: "music.mp3"
@@ -56,14 +54,11 @@ function renderConfig() {
   $("displayYear").textContent = yearNum;
   $("calMonthYear").textContent = `${monthName} ${yearNum}`;
 
-  // Manzil va Sovg'a ma'lumotlari
+  // Manzil va Oila ma'lumotlari
   $("venueTime").textContent = `${pad(eventDate.getHours())}:${pad(eventDate.getMinutes())}`;
   $("venueCity").textContent = CONFIG.venueCity;
   $("venueHall").textContent = CONFIG.venueHall;
   $("mapBtn").href = CONFIG.mapUrl;
-
-  $("cardNumberDisplay").textContent = CONFIG.cardNumber;
-  $("cardHolderDisplay").textContent = CONFIG.cardHolder;
   $("familyName").textContent = CONFIG.family;
 
   // Hujjat sarlavhasi
@@ -201,33 +196,6 @@ function showToast(msg) {
   setTimeout(() => {
     toast.classList.remove("show");
   }, 2500);
-}
-
-$("copyCardBtn").addEventListener("click", () => {
-  const rawNum = CONFIG.cardNumber.replace(/\s+/g, "");
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(rawNum).then(() => {
-      showToast("Karta raqami nusxalandi! ✓");
-    }).catch(() => {
-      fallbackCopy(rawNum);
-    });
-  } else {
-    fallbackCopy(rawNum);
-  }
-});
-
-function fallbackCopy(text) {
-  const input = document.createElement("input");
-  input.value = text;
-  document.body.appendChild(input);
-  input.select();
-  try {
-    document.execCommand("copy");
-    showToast("Karta raqami nusxalandi! ✓");
-  } catch (e) {
-    showToast("Karta raqami: " + text);
-  }
-  document.body.removeChild(input);
 }
 
 /* ==========================================================================

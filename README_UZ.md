@@ -8,7 +8,6 @@ Ushbu taklifnoma to‘liq mobil qurilmalar uchun moslashtirilgan bo‘lib, video
 - **Dinamik Kalendar:** Belgilangan to‘y sanasi oyining to‘liq kalendari avtomatik hisoblanadi va to‘y kuni urib turuvchi qizil yurak (`❤️`) bilan belgilanadi.
 - **Vaqt sanagichi (Countdown):** To‘y kunigacha qolgan kun, soat, daqiqa va soniyalarni real vaqt rejimida ko‘rsatadi.
 - **Kun tartibi (Dastur):** Markaziy chiziq bo‘ylab navbatma-navbat joylashgan vaqt va marosim bosqichlari.
-- **Sovg‘a tavsiyasi va karta raqami:** Karta raqamini bir marta bosish bilan xotiraga nusxalash (Clipboard copy).
 - **Manzil va xarita:** Google Maps / xaritaga to‘g‘ridan-to‘g‘ri o‘tish tugmasi.
 - **WhatsApp RSVP:** Mehmonlar o‘z ishtirokini WhatsApp orqali tasdiqlashlari mumkin.
 - **Moslashuvchanlik (Responsive):** Telefonlarda to‘liq 100% ekran bo‘lib ochiladi; kompyuterda esa chiroyli iPhone ramkasida ko‘rsatiladi.
@@ -26,8 +25,6 @@ const CONFIG = {
   venueCity: "JIZZAX SHAHRI",                        // Shakar / Viloyat
   venueHall: "Yakkasaroy to‘ylar maskani",           // To'yxona nomi
   mapUrl: "https://maps.google.com/?q=Jizzax",       // Xarita havolasi
-  cardNumber: "9860 0825 5624 1501",                 // Karta raqami
-  cardHolder: "Usmonov Umarbek",                     // Karta egasi
   family: "Xamrayevlar oilasi",                      // Oila nomi (Ehtirom ila)
   whatsappNumber: "998901234567",                    // RSVP javobi boradigan raqam
   musicUrl: "music.mp3"                              // Musiqa fayli

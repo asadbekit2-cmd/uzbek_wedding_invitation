@@ -35,6 +35,8 @@ html, body {
   color: var(--text-dark);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 /* ==========================================================================
@@ -164,7 +166,7 @@ body.desktop-preview::before {
   border: 1px solid #1b242e;
 }
 
-/* Mobile Viewport Scroller */
+/* Mobile Viewport Scroller (Scroller butunlay yashiringan) */
 .mobile-viewport {
   position: relative;
   width: 100%;
@@ -174,18 +176,18 @@ body.desktop-preview::before {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE va Edge */
 }
 
-/* Custom subtle scrollbar */
-.mobile-viewport::-webkit-scrollbar {
-  width: 4px;
-}
-.mobile-viewport::-webkit-scrollbar-track {
-  background: transparent;
-}
-.mobile-viewport::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
+/* Chrome, Safari, Opera va barcha WebKit brauzerlarda scroller va o'ng bo'shliqni yo'qotish */
+.mobile-viewport::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
 /* ==========================================================================
@@ -752,111 +754,6 @@ body.desktop-preview::before {
   color: #697582;
 }
 
-/* ==========================================================================
-   5. GIFT RECOMMENDATION SECTION (SOVG'A TAVSIYASI)
-   ========================================================================== */
-
-.gift-section {
-  padding: 0 16px 36px;
-}
-
-.gift-card {
-  background: var(--primary-slate);
-  border-radius: 24px;
-  padding: 34px 22px 30px;
-  color: #ffffff;
-  text-align: center;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-}
-
-.gift-icon-wrap {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-}
-
-.gift-svg {
-  width: 32px;
-  height: 32px;
-}
-
-.gift-title {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  font-style: italic;
-  font-weight: 400;
-  color: #ffffff;
-  margin-bottom: 14px;
-}
-
-.gift-desc {
-  font-size: 12px;
-  line-height: 1.7;
-  color: #e5edf5;
-  max-width: 290px;
-  margin: 0 auto 24px;
-}
-
-.gift-card-box {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
-  padding: 20px 16px;
-  margin-bottom: 20px;
-}
-
-.card-label {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: #adc0d3;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.card-number {
-  font-family: var(--font-sans);
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-.card-holder {
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-style: italic;
-  color: #d1dde9;
-}
-
-.copy-card-btn {
-  width: 100%;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 13px 20px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.8px;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-
-.copy-card-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #ffffff;
-}
-
-.copy-card-btn:active {
-  transform: scale(0.98);
-}
 
 /* ==========================================================================
    6. VENUE / MANZIL
@@ -1007,20 +904,6 @@ body.desktop-preview::before {
   color: #ffffff;
 }
 
-.family-flower-wrap {
-  position: absolute;
-  right: 0;
-  bottom: 28px;
-  width: 130px;
-  pointer-events: none;
-  opacity: 0.9;
-}
-
-.family-flower {
-  width: 100%;
-  height: auto;
-  display: block;
-}
 
 /* Footer Attribution */
 .invite-footer {
@@ -1052,23 +935,19 @@ body.desktop-preview::before {
   position: absolute;
   bottom: 24px;
   right: 20px;
-  z-index: 40;
+  z-index: 100;
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 999px;
-  padding: 4px 5px 4px 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  padding: 5px 6px 5px 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
   cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.floating-music-bar:hover {
-  transform: scale(1.04);
+  user-select: none;
 }
 
 .equalizer-bars {
