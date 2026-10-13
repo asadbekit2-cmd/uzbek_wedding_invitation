@@ -1,0 +1,1309 @@
+/* ==========================================================================
+   TO'Y TAKLIFNOMASI — LUXURY MOBILE WEDDING INVITATION (MP4 REPLICA)
+   ========================================================================== */
+
+:root {
+  --primary-slate: #465362;
+  --dark-slate: #374350;
+  --darker-slate: #2a343f;
+  --light-bg: #fdfcfb;
+  --card-bg: #ffffff;
+  --border-subtle: #eae4dc;
+  --text-dark: #242c34;
+  --text-body: #495460;
+  --text-muted: #7d8b99;
+  --text-light: #f1f5f9;
+  --text-slate-light: #c0d1e2;
+  --accent-heart: #e63946;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-script: 'Alex Brush', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #12161b;
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   DESKTOP PRESENTATION BAR & ENVIRONMENT
+   ========================================================================== */
+
+body.desktop-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background: #12161b url("assets/bg_ambiance.jpg") center center / cover no-repeat fixed;
+  position: relative;
+}
+
+body.desktop-preview::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(18, 22, 27, 0.72) 0%, rgba(10, 13, 16, 0.94) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.desktop-bar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 4px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.device-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.pill-btn-sm {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pill-btn-sm:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   PHONE FRAME MOCKUP (FOR DESKTOP) & ADAPTIVE MOBILE CONTAINER
+   ========================================================================== */
+
+.phone-frame {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 420px;
+  height: 870px;
+  max-height: calc(100vh - 65px);
+  margin: 10px auto 30px;
+  background: #000;
+  border-radius: 46px;
+  border: 10px solid #1c2229;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 10px 25px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* iPhone Dynamic Island / Notch on Desktop */
+.phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98px;
+  height: 24px;
+  background: #000000;
+  border-radius: 20px;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+}
+
+.notch-camera {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0f141a;
+  border: 1px solid #1b242e;
+}
+
+/* Mobile Viewport Scroller */
+.mobile-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--light-bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Custom subtle scrollbar */
+.mobile-viewport::-webkit-scrollbar {
+  width: 4px;
+}
+.mobile-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mobile-viewport::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   1. COVER / SPLASH SCREEN
+   ========================================================================== */
+
+.cover-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(175deg, #7b8a99 0%, #637383 45%, #4f5f6e 100%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s ease;
+}
+
+.cover-screen.opened {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.cover-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 28px;
+  padding: 42px 24px 38px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(20, 27, 34, 0.25);
+  animation: coverCardPop 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes coverCardPop {
+  0% { opacity: 0; transform: scale(0.92) translateY(15px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cover-monogram {
+  width: 86px;
+  height: 86px;
+  margin: 0 auto 24px;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 27px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.12);
+}
+
+.cover-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3.5px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.cover-names {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 34px;
+  line-height: 1.15;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.open-btn {
+  background: #ffffff;
+  color: #364452;
+  border: none;
+  border-radius: 999px;
+  padding: 15px 30px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+  width: 100%;
+}
+
+.open-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  background: #fbfbfb;
+}
+
+.open-btn:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   2. MAIN INVITATION HEADER & QUOTE
+   ========================================================================== */
+
+.invitation-main {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background: #ffffff;
+  padding-bottom: 50px;
+}
+
+.invite-header {
+  padding: 30px 20px 10px;
+  text-align: center;
+}
+
+.header-flower-box {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto 10px;
+}
+
+.header-flower {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.header-quote-block {
+  margin: 12px auto 20px;
+  max-width: 320px;
+}
+
+.quote-text {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.65;
+  color: #38434f;
+  margin-bottom: 8px;
+}
+
+.quote-heart {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.quote-source {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  color: #798795;
+}
+
+/* Couple Names Display */
+.couple-names-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 18px 0 16px;
+}
+
+.name-groom, .name-bride {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 400;
+  color: #212831;
+  letter-spacing: 1px;
+}
+
+.names-separator {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 300;
+  color: #9ba7b4;
+}
+
+/* Tagline */
+.tagline-block {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #4b5866;
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   COUPLE PHOTO SECTION
+   ========================================================================== */
+
+.photo-section {
+  padding: 0 20px 28px;
+  text-align: center;
+}
+
+.couple-photo-card {
+  width: 100%;
+  max-width: 330px;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.couple-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.photo-quote {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.65;
+  color: #4b5764;
+  max-width: 310px;
+  margin: 22px auto 0;
+}
+
+/* ==========================================================================
+   3. SLATE NAVY / DATE, COUNTDOWN & CALENDAR SECTION
+   ========================================================================== */
+
+.slate-section {
+  background: var(--primary-slate);
+  border-radius: 32px 32px 0 0;
+  padding: 38px 20px 42px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.slate-quote-block {
+  max-width: 320px;
+  margin: 0 auto 28px;
+}
+
+.slate-quote {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.7;
+  color: #eaf0f6;
+  margin-bottom: 10px;
+}
+
+.slate-emojis {
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+/* Date Display */
+.event-date-display {
+  margin: 28px 0 34px;
+}
+
+.date-month-top {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: var(--text-slate-light);
+  margin-bottom: 10px;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.date-weekday {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  font-weight: 400;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 4px;
+  min-width: 80px;
+}
+
+.date-day-num {
+  font-family: var(--font-serif);
+  font-size: 46px;
+  font-style: italic;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.date-year {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  font-weight: 400;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 4px;
+  min-width: 80px;
+}
+
+/* Countdown */
+.countdown-block {
+  margin: 24px 0 38px;
+}
+
+.countdown-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #d1dde8;
+  margin-bottom: 18px;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cd-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cd-box {
+  width: 58px;
+  height: 58px;
+  background: var(--dark-slate);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: #ffffff;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.22);
+}
+
+.cd-label {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #9cb0c3;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.cd-colon {
+  font-size: 20px;
+  color: #8da2b6;
+  margin-top: -18px;
+}
+
+/* Calendar */
+.calendar-block {
+  margin: 32px auto 0;
+  max-width: 320px;
+}
+
+.calendar-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.8px;
+  color: #d5e2ee;
+}
+
+.calendar-month-name {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  color: #9bb0c4;
+  margin: 6px 0 18px;
+}
+
+.calendar-grid-wrap {
+  width: 100%;
+}
+
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #9db1c5;
+  margin-bottom: 12px;
+}
+
+.cal-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  font-size: 13px;
+}
+
+.cal-day-cell {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dae6f2;
+  position: relative;
+  font-weight: 400;
+}
+
+.cal-day-cell.empty {
+  visibility: hidden;
+}
+
+.cal-day-cell.wedding-day {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.wedding-heart-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+}
+
+.wedding-heart-badge .heart-icon {
+  position: absolute;
+  font-size: 18px;
+  animation: heartPulse 1.6s ease-in-out infinite;
+}
+
+.wedding-heart-badge .day-number-text {
+  position: relative;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(230, 57, 70, 0.4)); }
+  50% { transform: scale(1.18); filter: drop-shadow(0 0 8px rgba(230, 57, 70, 0.8)); }
+}
+
+/* ==========================================================================
+   4. TIMELINE / UNUTILMAS KUN DASTURI
+   ========================================================================== */
+
+.program-section {
+  background: var(--light-bg);
+  padding: 44px 20px 48px;
+}
+
+.program-title {
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: 3.5px;
+  color: #27313a;
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+/* Central vertical spine */
+.timeline-spine {
+  position: absolute;
+  top: 10px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  background: #cfc6ba;
+}
+
+.timeline-entry {
+  position: relative;
+  width: 50%;
+  margin-bottom: 34px;
+}
+
+.timeline-entry.left {
+  left: 0;
+  text-align: right;
+  padding-right: 22px;
+}
+
+.timeline-entry.right {
+  left: 50%;
+  text-align: left;
+  padding-left: 22px;
+}
+
+/* Dot on the spine */
+.entry-dot {
+  position: absolute;
+  top: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8b8073;
+}
+
+.timeline-entry.left .entry-dot {
+  right: -3.5px;
+}
+
+.timeline-entry.right .entry-dot {
+  left: -3.5px;
+}
+
+.entry-time {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8b8175;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.entry-heading {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: #242c34;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.entry-text {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #697582;
+}
+
+/* ==========================================================================
+   5. GIFT RECOMMENDATION SECTION (SOVG'A TAVSIYASI)
+   ========================================================================== */
+
+.gift-section {
+  padding: 0 16px 36px;
+}
+
+.gift-card {
+  background: var(--primary-slate);
+  border-radius: 24px;
+  padding: 34px 22px 30px;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.gift-icon-wrap {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.gift-svg {
+  width: 32px;
+  height: 32px;
+}
+
+.gift-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.gift-desc {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #e5edf5;
+  max-width: 290px;
+  margin: 0 auto 24px;
+}
+
+.gift-card-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 20px 16px;
+  margin-bottom: 20px;
+}
+
+.card-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #adc0d3;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-number {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.card-holder {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: italic;
+  color: #d1dde9;
+}
+
+.copy-card-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 13px 20px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.copy-card-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+.copy-card-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   6. VENUE / MANZIL
+   ========================================================================== */
+
+.venue-section {
+  padding: 10px 20px 38px;
+  text-align: center;
+}
+
+.rings-icon-wrap {
+  width: 60px;
+  height: 36px;
+  margin: 0 auto 10px;
+  color: #7b8897;
+}
+
+.rings-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.venue-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-style: italic;
+  color: #27313b;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.venue-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b4652;
+  margin-bottom: 6px;
+}
+
+.venue-city {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #27313b;
+  margin-bottom: 4px;
+}
+
+.venue-hall {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  color: #637180;
+  margin-bottom: 22px;
+}
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--primary-slate);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 12px 26px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(70, 83, 98, 0.25);
+  transition: all 0.25s;
+}
+
+.map-btn:hover {
+  background: #394451;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   7. DEAR GUESTS & FAMILY SIGNATURE SECTION
+   ========================================================================== */
+
+.family-section {
+  position: relative;
+  padding: 20px 20px 30px;
+  text-align: center;
+}
+
+.family-heart {
+  font-size: 18px;
+  color: #232a32;
+  margin-bottom: 12px;
+}
+
+.family-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: #2a343e;
+  margin-bottom: 14px;
+}
+
+.family-text {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.7;
+  color: #495562;
+  max-width: 320px;
+  margin: 0 auto 28px;
+}
+
+.family-sub {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #798795;
+  margin-bottom: 6px;
+}
+
+.family-name {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 400;
+  color: #222b34;
+  margin-bottom: 24px;
+}
+
+.rsvp-action-wrap {
+  margin: 18px auto 28px;
+}
+
+.rsvp-open-btn {
+  background: #ffffff;
+  color: var(--primary-slate);
+  border: 1.5px solid var(--primary-slate);
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.rsvp-open-btn:hover {
+  background: var(--primary-slate);
+  color: #ffffff;
+}
+
+.family-flower-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 28px;
+  width: 130px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.family-flower {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Footer Attribution */
+.invite-footer {
+  margin-top: 36px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7b8997;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.instagram-link:hover {
+  color: #3b4652;
+}
+
+/* ==========================================================================
+   8. FLOATING MUSIC BAR
+   ========================================================================== */
+
+.floating-music-bar {
+  position: absolute;
+  bottom: 24px;
+  right: 20px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 4px 5px 4px 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.floating-music-bar:hover {
+  transform: scale(1.04);
+}
+
+.equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+  padding-bottom: 1px;
+}
+
+.equalizer-bars span {
+  width: 2.5px;
+  background: #374452;
+  border-radius: 2px;
+  height: 4px;
+  transition: height 0.2s;
+}
+
+/* Animated dancing sound waves when playing */
+.floating-music-bar.playing .equalizer-bars span:nth-child(1) {
+  animation: eqBounce 0.9s ease-in-out infinite alternate;
+}
+.floating-music-bar.playing .equalizer-bars span:nth-child(2) {
+  animation: eqBounce 1.2s ease-in-out 0.2s infinite alternate;
+}
+.floating-music-bar.playing .equalizer-bars span:nth-child(3) {
+  animation: eqBounce 0.8s ease-in-out 0.4s infinite alternate;
+}
+.floating-music-bar.playing .equalizer-bars span:nth-child(4) {
+  animation: eqBounce 1.1s ease-in-out 0.1s infinite alternate;
+}
+
+@keyframes eqBounce {
+  0% { height: 3px; }
+  100% { height: 13px; }
+}
+
+.music-disc-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff;
+  color: #374452;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   RSVP MODAL / DRAWER
+   ========================================================================== */
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  background: rgba(18, 24, 30, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.modal-backdrop.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px 24px 0 0;
+  padding: 30px 24px 34px;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUpModal 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpModal {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #7a8694;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: #252e37;
+  margin-bottom: 6px;
+}
+
+.modal-sub {
+  font-size: 12px;
+  color: #697683;
+  margin-bottom: 20px;
+}
+
+.modal-form label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #404c59;
+  margin: 12px 0 6px;
+}
+
+.modal-form input,
+.modal-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d4dce4;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #27313b;
+  outline: none;
+  background: #f8fafc;
+}
+
+.modal-form input:focus,
+.modal-form select:focus {
+  border-color: var(--primary-slate);
+  background: #ffffff;
+}
+
+.modal-submit-btn {
+  width: 100%;
+  margin-top: 22px;
+  background: #25d366;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  transition: background 0.2s;
+}
+
+.modal-submit-btn:hover {
+  background: #20ba5a;
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+
+.toast-notice {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: #1c242c;
+  color: #ffffff;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 200;
+}
+
+.toast-notice.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (REAL MOBILE SCREEN)
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  body.desktop-preview {
+    background: #ffffff;
+  }
+
+  body.desktop-preview::before {
+    display: none;
+  }
+
+  .desktop-bar {
+    display: none;
+  }
+
+  .phone-frame {
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .phone-notch {
+    display: none;
+  }
+
+  .floating-music-bar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* Fullscreen mode toggle on desktop */
+body.fullscreen-mode .phone-frame {
+  max-width: 480px;
+  height: 98vh;
+  max-height: 98vh;
+  border-radius: 20px;
+  border-width: 4px;
+}
+
+body.fullscreen-mode .phone-notch {
+  display: none;
+}
